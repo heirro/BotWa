@@ -62,7 +62,7 @@ async function msgHandler (client, message) {
             switch (cmd[0]) {
                 case '#menu':
                 case '#help':
-                    client.sendText(from, 'Menu: \n1. #sticker / #stiker: kirim gambar dengan caption atau balas gambar yang sudah dikirim. \n2. #sticker / #stiker spasi url gambar (contoh: #stiker https://avatars2.githubusercontent.com/u/24309806) \n3. #tiktok spasi url (contoh: #tiktok https://www.tiktok.com/@yogaGanteng/video/685521...)')
+                    client.sendText(from, 'Menu: \n1. #sticker / #stiker: kirim gambar dengan caption atau balas gambar yang sudah dikirim. \n2. #sticker / #stiker spasi url gambar (contoh: #stiker https://avatars2.githubusercontent.com/u/24309806) \n3. #tiktok spasi url (contoh: #tiktok https://www.tiktok.com/@heirrok/video/685521...)')
                     break
                 case '#sticker':
                 case '#stiker':
@@ -93,7 +93,7 @@ async function msgHandler (client, message) {
                             const videoMeta = await tiktok(url)
                             const filename = videoMeta.authorMeta.name + '.mp4'
                             await client.sendFile(from, videoMeta.videobase64, filename, videoMeta.NoWaterMark ? '' : 'Maaf, video tanpa watermark tidak tersedia')
-                                .then(await client.sendText(from, `Metadata:\nUsername: ${videoMeta.authorMeta.name} \nMusic: ${videoMeta.musicMeta.musicName} \nView: ${videoMeta.playCount.toLocaleString()} \nLike: ${videoMeta.diggCount.toLocaleString()} \nComment: ${videoMeta.commentCount.toLocaleString()} \nShare: ${videoMeta.shareCount.toLocaleString()} \nCaption: ${videoMeta.text.trim() ? videoMeta.text : '-'} \n\nDonasi: bantu aku beli dimsum dengan menyawer melalui https://saweria.co/donate/yogasakti atau mentrakteer melalui https://trakteer.id/red-emperor \nTerimakasih.`))
+                                .then(await client.sendText(from, `*Metadata Account*\n*Username:* ${videoMeta.authorMeta.name} \n*Music:* ${videoMeta.musicMeta.musicName} \n*View:* ${videoMeta.playCount.toLocaleString()} \n*Like:* ${videoMeta.diggCount.toLocaleString()} \n*Comment:* ${videoMeta.commentCount.toLocaleString()} \n*Share:* ${videoMeta.shareCount.toLocaleString()} \n*Caption:* ${videoMeta.text.trim() ? videoMeta.text : '-'} \n==================\nInstagram @heirrok \nTerimakasih sudah menggunakan layanan ini.`))
                                 .catch(err => console.log('Caught exception: ', err))
                         } else {
                             client.sendText(from, 'Maaf, Url yang kamu kirim tidak valid')
